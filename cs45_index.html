@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maze Generator</title>
     <style>
-      body {
+     body {
     margin: 0;
-    background: #f0f0f0;
+    background: #ffcc00;
     text-align: center;
     font-family: Arial, sans-serif;
 }
@@ -21,13 +21,15 @@
 }
 
 .form-container {
-    background: #fff;
+    background: #ffcc00; /* Yellow background */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 form {
+    max-width: 600px;
+    margin: auto;
     text-align: left;
 }
 
@@ -39,6 +41,7 @@ form {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #000; /* Black label text */
 }
 
 .input-field {
@@ -53,24 +56,25 @@ form {
 }
 
 .button {
-    background: #007bff;
-    color: #fff;
+    background: #000; /* Black button background */
+    color: #ffcc00; /* Yellow button text */
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 .button:hover {
-    background: #0056b3;
+    background: #222; /* Darker black on hover */
 }
-        
+
     </style>
 </head>
 
 <body>
     <div>
-        <canvas></canvas>
+        <!-- <canvas></canvas> -->
         <ul>
             <li><label>Width:</label><input id="width" type="text" /></li>
             <li><label>Height:</label><input id="height" type="text" /></li>
@@ -80,8 +84,10 @@ form {
             <li style="display: none;"><label>Path Color:</label><input id="pathcolor" type="text" /></li>
             <li style="display: none;"><label>Wall Color:</label><input id="wallcolor" type="text" /></li>
             <li><label>Maze code (Seed:)</label><input id="seed" type="text" /></li>
+                <canvas></canvas>
             <li><input id="randomseed" type="button" value="Random Seed" /></li>
         </ul>
+ 
     </div>
 
     <script>
@@ -90,7 +96,7 @@ form {
         outerWall = 2        //Width of the Outer most wall
         width = 15           //Number paths fitted horisontally
         height = 15          //Number paths fitted vertically
-        delay = 1            //Delay between algorithm cycles
+        delay = 4            //Delay between algorithm cycles
         x = width / 2 | 0        //Horisontal starting position
         y = height / 2 | 0       //Vertical starting position
         seed = Math.random() * 100000 | 0//Seed for random numbers
